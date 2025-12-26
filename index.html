@@ -2,69 +2,63 @@
 <html lang="pt-BR">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Master System – AK</title>
+<title>NES – Contra</title>
 
 <script>
-  // CONFIGURAÇÃO (corrigida para a sua estrutura)
+  // CONFIGURAÇÃO NES (compatível com EmulatorJS estável)
   EJS_DEBUG_XX = true;
   EJS_threads = false;
+  EJS_player        = "#game";
+  EJS_core          = "nestopia";          // Core NES
+  EJS_gameUrl       = "roms/c1.nes";     // Caminho da ROM NES
+  EJS_pathtodata    = "data/";             // Caminho padrão do EmulatorJS
 
-  EJS_player      = "#game";
-  EJS_core        = "smsplus";                 // ✔ CORE correto no seu package.json
-  EJS_gameUrl     = "roms/ak.sms";             // ✔ ROM correta
-  EJS_pathtodata  = "data/";   // ✔ caminho correto
-
-  // Iniciar sozinho ao carregar
+  // Inicialização automática
   EJS_startOnLoaded = true;
-  EJS_fullscreenOnLoaded = false; // fullscreen apenas após toque
+  EJS_fullscreenOnLoaded = false; // Fullscreen só após toque
 </script>
 
 <script src="data/loader.js"></script>
 
 <style>
-html, body {
-  margin: 0;
-  background: black;
-  height: 100%;
-  overflow: hidden;
-}
+  html, body {
+    margin: 0;
+    background: black;
+    height: 100%;
+    overflow: hidden;
+  }
 
-#game {
-  width: 100vw;
-  height: 100vh;
-}
+  #game {
+    width: 100vw;
+    height: 100vh;
+  }
 
-/* overlay de toque */
-#overlay {
-  position: fixed;
-  inset: 0;
-  background: black;
-  color: white;
-  font-size: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 10;
-  cursor: pointer;
-}
+  /* Overlay de toque */
+  #overlay {
+    position: fixed;
+    inset: 0;
+    background: black;
+    color: white;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    cursor: pointer;
+  }
 </style>
 </head>
 
 <body>
+  <div id="overlay">▶ TOCAR PARA JOGAR</div>
+  <div id="game"></div>
 
-<div id="overlay">▶ TOCAR PARA JOGAR</div>
-<div id="game"></div>
-
-<script>
-  const overlay = document.getElementById("overlay");
-
-  overlay.addEventListener("click", () => {
-    overlay.remove();
-
-    // Fullscreen apenas após gesto
-    document.documentElement.requestFullscreen?.();
-  });
-</script>
-
+  <script>
+    const overlay = document.getElementById("overlay");
+    overlay.addEventListener("click", () => {
+      overlay.remove();
+      document.documentElement.requestFullscreen?.();
+    });
+  </script>
 </body>
 </html>
