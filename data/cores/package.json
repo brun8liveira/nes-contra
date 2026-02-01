@@ -3,7 +3,7 @@
     "version": "4.2.3",
     "type": "module",
     "description": "EmulatorJS Cores",
-    "homepage": "https://emulatorjs.org",
+    "homepage": "https://cdn.emulatorjs.org",
     "license": "GPL-3.0",
     "repository": {
         "type": "git",
